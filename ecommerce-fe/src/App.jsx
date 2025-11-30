@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Login from './pages/Login'
 import Register from './pages/Register'
 import { ToastContainer } from 'react-toastify';
-import Overview from './pages/dashboard/overview';
+import Overview from './pages/dashboard/Overview';
 import UserManagement from './pages/dashboard/UserManagement/UserManagement';
 import ProductManagement from './pages/dashboard/ProductManagement/ProductManagement';
 import OrderManagement from './pages/dashboard/OrderManagement';
