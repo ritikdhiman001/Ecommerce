@@ -34,7 +34,12 @@ router.post("/login", async (req, res) => {
             return res.status(401).send("User not Found");
         }
         if (userData.password === password) {
-            return res.send("Login Successfully");
+            const data = {
+                message: "Login Successfully",
+                userData: userData
+            }
+            return res.json(data);
+            
         }
         return res.status(401).send("Incorrect Password");
     } catch (error) {

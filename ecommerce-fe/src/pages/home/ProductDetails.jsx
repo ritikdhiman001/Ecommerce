@@ -5,7 +5,7 @@ import { formatter } from "@/utils";
 export default function ProductDetail({ product }) {
   return (
     <>
-      <div className="flex justify-center bg-[#f6f6f6]">
+      <div className="flex justify-center bg-[#f6f6f6] mt-[70px]">
         <img src={`http://localhost:3000/uploads/${product.image}`} alt={product.title} className="max-h-[768px]" />
       </div>
       <div className="container mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -24,7 +24,7 @@ export default function ProductDetail({ product }) {
           <div>
             <h3 className="uppercase font-semibold text-sm mb-1">Product Description</h3>
             <p className="text-xs text-gray-600 mb-1">{product.style}</p>
-            <p className="text-sm text-gray-800 leading-relaxed">{product.description}</p>
+            <p className="text-sm text-white leading-relaxed">{product.description}</p>
           </div>
 
           <Accordion type="single" collapsible className="w-full border-t border-b divide-y">

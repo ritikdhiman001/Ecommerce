@@ -4,7 +4,7 @@ import AppLayout from "@/layouts/AppLayout";
 
 function Home() {
   return (
-    <AppLayout>
+    <AppLayout isBannerVisible={true} >
       <Cards />
     </AppLayout>
   );
