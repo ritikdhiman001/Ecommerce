@@ -5,18 +5,18 @@ import { X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 const CartItem = ({ id, qty, setTotal }) => {
-  const {  removeFromCart, updateQuantity } = useCart();
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const { removeFromCart, updateQuantity } = useCart();
   const [ValData, setValData] = useState({});
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/product/${id}`)
+      .get(`${apiUrl}/product/${id}`)
       .then((res) => {
         setValData(res.data);
       })
       .catch((err) => console.error(err));
   }, [id, qty, setTotal]);
-
 
   return (
     <>
@@ -26,7 +26,7 @@ const CartItem = ({ id, qty, setTotal }) => {
         </div>
         <div className="flex gap-6 pt-4">
           <img
-            src={`http://localhost:3000/uploads/${ValData.image}`}
+            src={`${apiUrl}/uploads/${ValData.image}`}
             alt="card-image"
             className="w-32 h-38 object-cover"
           />

@@ -11,6 +11,8 @@ function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   function handleChange(e) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -31,7 +33,7 @@ function Login() {
       setErrors({});
       console.log(formData);
       axios
-        .post("http://localhost:3000/login", {
+        .post(`${apiUrl}/login`, {
           email: formData.email,
           password: formData.password,
         })
@@ -40,7 +42,6 @@ function Login() {
           console.log("UserData:", response.data.userData);
           toast.success("Login Successfully");
           navigate("/");
-
         })
         .catch((error) => {
           console.log(error);

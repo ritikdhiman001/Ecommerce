@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 function Register() {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const [formData, setFormData] = useState({
@@ -54,7 +55,7 @@ function Register() {
       setErrors({});
       console.log(formData);
       await axios
-        .post("http://localhost:3000/adduser", {
+        .post(`${apiUrl}/adduser`, {
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,

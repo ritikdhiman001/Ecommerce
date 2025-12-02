@@ -1,18 +1,30 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { formatter } from "@/utils";
 
 export default function ProductDetail({ product }) {
+  const apiUrl = import.meta.env.VITE_API_URL;
   return (
     <>
       <div className="flex justify-center bg-[#f6f6f6] mt-[70px]">
-        <img src={`http://localhost:3000/uploads/${product.image}`} alt={product.title} className="max-h-[768px]" />
+        <img
+          src={`${apiUrl}/uploads/${product.image}`}
+          alt={product.title}
+          className="max-h-[768px]"
+        />
       </div>
       <div className="container mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-3 gap-12">
         {/* Left Column */}
         <div className="lg:col-span-2 space-y-8">
           <h1 className="text-2xl font-light">{product.title}</h1>
-          <p className="text-xl font-medium">{formatter.format(product.price) }</p>
+          <p className="text-xl font-medium">
+            {formatter.format(product.price)}
+          </p>
 
           <div>
             <label className="block text-sm mb-1">Size</label>
@@ -22,31 +34,39 @@ export default function ProductDetail({ product }) {
           </div>
 
           <div>
-            <h3 className="uppercase font-semibold text-sm mb-1">Product Description</h3>
+            <h3 className="uppercase font-semibold text-sm mb-1">
+              Product Description
+            </h3>
             <p className="text-xs text-gray-600 mb-1">{product.style}</p>
-            <p className="text-sm text-white leading-relaxed">{product.description}</p>
+            <p className="text-sm text-white leading-relaxed">
+              {product.description}
+            </p>
           </div>
 
-          <Accordion type="single" collapsible className="w-full border-t border-b divide-y">
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full border-t border-b divide-y"
+          >
             <AccordionItem value="details">
               <AccordionTrigger>Product Details</AccordionTrigger>
-              <AccordionContent>
-                {product.details}
-              </AccordionContent>
+              <AccordionContent>{product.details}</AccordionContent>
             </AccordionItem>
             <AccordionItem value="commitment">
               <AccordionTrigger>Our Commitment</AccordionTrigger>
-              <AccordionContent>
-                {product.commitment}
-              </AccordionContent>
+              <AccordionContent>{product.commitment}</AccordionContent>
             </AccordionItem>
           </Accordion>
         </div>
 
         {/* Right Column */}
         <div className="space-y-6">
-          <p className="text-sm">Select the size of the item to see the expected delivery date.</p>
-          <Button className="w-full bg-black text-white text-sm py-6 uppercase tracking-wide">Select Size</Button>
+          <p className="text-sm">
+            Select the size of the item to see the expected delivery date.
+          </p>
+          <Button className="w-full bg-black text-white text-sm py-6 uppercase tracking-wide">
+            Select Size
+          </Button>
 
           <div className="space-y-4 text-sm">
             <div>
@@ -61,11 +81,13 @@ export default function ProductDetail({ product }) {
             <div>
               <strong>➕ Gucci Services</strong>
               <p>
-                Complimentary Shipping, Complimentary Exchanges & Returns, Secure Payments and Signature Packaging
+                Complimentary Shipping, Complimentary Exchanges & Returns,
+                Secure Payments and Signature Packaging
               </p>
             </div>
           </div>
         </div>
-      </div></>
+      </div>
+    </>
   );
 }

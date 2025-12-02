@@ -1,22 +1,32 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AddCategory from "./AddCategory";
 function Category() {
-  const [categories, setCategories] = useState([])
-  const [open, setOpen] = useState(false)
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const [categories, setCategories] = useState([]);
+  const [open, setOpen] = useState(false);
   useEffect(() => {
-    axios.get("http://localhost:3000/allcategory")
-      .then(res => setCategories(res.data))
-      .catch(err => console.log(err)
-      )
-  }, [])
+    axios
+      .get(`${apiUrl}/allcategory`)
+      .then((res) => setCategories(res.data))
+      .catch((err) => console.log(err));
+  }, []);
   return (
-
     <DashboardLayout>
       <h2 className="text-center text-4xl font-bold">Category List</h2>
-      <button onClick={() => setOpen(true)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+      <button
+        onClick={() => setOpen(true)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+      >
         Add Category
       </button>
       <AddCategory open={open} setOpen={setOpen} />
@@ -37,6 +47,6 @@ function Category() {
         </TableBody>
       </Table>
     </DashboardLayout>
-  )
+  );
 }
 export default Category;

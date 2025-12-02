@@ -5,18 +5,19 @@ import axios from "axios";
 import AppLayout from "@/layouts/AppLayout";
 
 export default function ProductPage() {
-    const { id } = useParams();
-    const [productData, setProductData] = useState({});
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const { id } = useParams();
+  const [productData, setProductData] = useState({});
 
-    useEffect(() => {
-        axios.get(`http://localhost:3000/product/${id}`).then((e) => {
-            setProductData(e.data)
-        })
-    }, [])
+  useEffect(() => {
+    axios.get(`${apiUrl}/product/${id}`).then((e) => {
+      setProductData(e.data);
+    });
+  }, []);
 
-    return (
-        <AppLayout>
-            <ProductDetail product={productData} />
-        </AppLayout>
-    )
+  return (
+    <AppLayout>
+      <ProductDetail product={productData} />
+    </AppLayout>
+  );
 }

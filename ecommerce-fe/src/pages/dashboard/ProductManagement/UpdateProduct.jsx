@@ -21,6 +21,7 @@ import { toast } from "react-toastify";
 const SIZES = ["M", "L", "XL", "XXL"];
 
 export const UpdateProduct = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const [productData, setProductData] = useState({});
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ export const UpdateProduct = () => {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/product/${id}`).then((data) => {
+    axios.get(`${apiUrl}/product/${id}`).then((data) => {
       setProductData(data.data);
     });
   }, [id]);
@@ -71,13 +72,11 @@ export const UpdateProduct = () => {
     });
     formData.append("category", values.category);
     formData.append("image", values.ProductImg);
-    axios
-      .put(`http://localhost:3000/update-product/${id}`, formData)
-      .then((e) => {
-        console.log(e);
-        toast.success("Product Update successfully")
-        navigate("/product-management")
-      });
+    axios.put(`${apiUrl}/update-product/${id}`, formData).then((e) => {
+      console.log(e);
+      toast.success("Product Update successfully");
+      navigate("/product-management");
+    });
   };
 
   console.log(typeof productData.image);
@@ -119,7 +118,7 @@ export const UpdateProduct = () => {
                       {/* Preview if from DB */}
                       {typeof field.value === "string" && (
                         <img
-                          src={`http://localhost:3000/uploads/${field.value}`}
+                          src={`${apiUrl}/uploads/${field.value}`}
                           alt="Current Product"
                           className="h-20 w-20 object-cover rounded"
                         />
@@ -127,7 +126,7 @@ export const UpdateProduct = () => {
 
                       {/* Preview if new file */}
                       {field.value instanceof File && (
-                        <img  
+                        <img
                           src={URL.createObjectURL(field.value)}
                           alt="New Product Preview"
                           className="h-20 w-20 object-cover rounded"
