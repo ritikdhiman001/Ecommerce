@@ -3,24 +3,44 @@ const router = express.Router();
 const ProductModal = require("../models/Products");
 const multer = require("multer");
 const path = require("path");
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + path.extname(file.originalname);
-    cb(null, file.fieldname + "-" + uniqueSuffix);
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "uploads/");
+//   },
+//   filename: function (req, file, cb) {
+//     const uniqueSuffix = Date.now() + path.extname(file.originalname);
+//     cb(null, file.fieldname + "-" + uniqueSuffix);
+//   },
+// });
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "products",
+    format: async (req, file) => {
+      // preserve extension (jpg, png)
+      return path.extname(file.originalname).replace(".", "") || "jpg";
+    },
+    public_id: (req, file) => `prod_${Date.now()}_${Math.round(Math.random()*1e6)}`
   },
 });
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
 // Add Product
 router.post("/addproduct", upload.single("image"), async (req, res) => {
   const { productName, description, price, category, quantity, size } =
     req.body;
 
-  const image = req.file ? req.file.filename : "";
+  const image = req.file ? req.file.path : "";
+  
   try {
     const newProduct = new ProductModal({
       productName,
@@ -72,7 +92,6 @@ router.put("/update-product/:id", upload.single("image"), async (req, res) => {
     const image = req.file ? req.file.filename : product.image;
     const Data = { ...req.body, image: image };
 
-    console.log(productId, Data);
     if (!product) {
       res.status(404).send("Not Found");
     }
