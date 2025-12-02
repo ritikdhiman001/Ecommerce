@@ -91,6 +91,18 @@ function Navbar({ isDark = false }) {
         >
           Register
         </Link>
+        <Link target="_blank"
+          to="/dashboard"
+          className={`px-4 py-2 border rounded  ${
+            isControlled
+              ? "text-black border-black "
+              : isDark
+              ? "hover:text-black "
+              : "text-white"
+          }`}
+        >
+          Dashboard
+        </Link>
       </div>
     </nav>
   );
