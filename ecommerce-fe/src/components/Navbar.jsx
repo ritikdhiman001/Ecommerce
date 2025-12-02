@@ -91,7 +91,7 @@ function Navbar({ isDark = false }) {
         >
           Register
         </Link>
-        <Link target="_blank"
+        <Link 
           to="/dashboard"
           className={`px-4 py-2 border rounded  ${
             isControlled
