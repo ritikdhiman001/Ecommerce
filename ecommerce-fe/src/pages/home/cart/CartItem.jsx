@@ -26,7 +26,7 @@ const CartItem = ({ id, qty, setTotal }) => {
         </div>
         <div className="flex gap-6 pt-4">
           <img
-            src={`${apiUrl}/uploads/${ValData.image}`}
+            src={ValData.image}
             alt="card-image"
             className="w-32 h-38 object-cover"
           />

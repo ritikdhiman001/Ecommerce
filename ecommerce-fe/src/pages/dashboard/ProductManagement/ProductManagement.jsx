@@ -29,7 +29,6 @@ function ProductManagement() {
         setValData(response.data);
       })
       .catch((error) => {
-        console.log(error.message.data);
       });
   };
 
@@ -61,7 +60,7 @@ function ProductManagement() {
               <TableCell>{i + 1}</TableCell>
               <TableCell>
                 <img
-                  src={`${apiUrl}/uploads/${val.image}`}
+                  src={val.image}
                   alt={val.productName}
                   width="80"
                   height="80"

@@ -13,7 +13,7 @@ export default function ProductDetail({ product }) {
     <>
       <div className="flex justify-center bg-[#f6f6f6] mt-[70px]">
         <img
-          src={`${apiUrl}/uploads/${product.image}`}
+          src={product.image}
           alt={product.title}
           className="max-h-[768px]"
         />

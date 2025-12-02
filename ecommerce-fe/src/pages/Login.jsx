@@ -31,20 +31,16 @@ function Login() {
       setErrors((prev) => ({ ...prev, email: "Invalid Email" }));
     } else {
       setErrors({});
-      console.log(formData);
       axios
         .post(`${apiUrl}/login`, {
           email: formData.email,
           password: formData.password,
         })
         .then((response) => {
-          console.log(response);
-          console.log("UserData:", response.data.userData);
           toast.success("Login Successfully");
           navigate("/");
         })
         .catch((error) => {
-          console.log(error);
           toast.error(error.response.data);
         });
     }

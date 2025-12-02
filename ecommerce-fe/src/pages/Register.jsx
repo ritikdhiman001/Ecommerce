@@ -53,7 +53,6 @@ function Register() {
       }));
     } else {
       setErrors({});
-      console.log(formData);
       await axios
         .post(`${apiUrl}/adduser`, {
           firstName: formData.firstName,
@@ -62,14 +61,12 @@ function Register() {
           password: formData.password,
         })
         .then((response) => {
-          console.log(response);
           if (response.status === 200) {
             toast.success("User Added Successfully!");
             navigate("/login");
           }
         })
         .catch((error) => {
-          console.log(error);
           toast.error("Failed to add user!");
         });
     }

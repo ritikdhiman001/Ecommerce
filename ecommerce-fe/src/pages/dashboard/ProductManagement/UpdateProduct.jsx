@@ -47,7 +47,6 @@ export const UpdateProduct = () => {
   }, [id]);
 
   useEffect(() => {
-    console.log({ productData });
 
     form.reset({
       price: productData.price,
@@ -61,7 +60,6 @@ export const UpdateProduct = () => {
   }, [form, productData]);
 
   const submitBtn = (values) => {
-    console.log(values);
     const formData = new FormData();
     formData.append("price", values.price);
     formData.append("quantity", values.quantity);
@@ -73,13 +71,10 @@ export const UpdateProduct = () => {
     formData.append("category", values.category);
     formData.append("image", values.ProductImg);
     axios.put(`${apiUrl}/update-product/${id}`, formData).then((e) => {
-      console.log(e);
       toast.success("Product Update successfully");
       navigate("/product-management");
     });
   };
-
-  console.log(typeof productData.image);
 
   return (
     <DashboardLayout>
@@ -118,7 +113,7 @@ export const UpdateProduct = () => {
                       {/* Preview if from DB */}
                       {typeof field.value === "string" && (
                         <img
-                          src={`${apiUrl}/uploads/${field.value}`}
+                          src={field.value}
                           alt="Current Product"
                           className="h-20 w-20 object-cover rounded"
                         />
@@ -228,7 +223,6 @@ export const UpdateProduct = () => {
                             value={size}
                             checked={field.value?.includes(size)}
                             onChange={(e) => {
-                              console.log(e.target.checked);
                               if (e.target.checked) {
                                 field.onChange(
                                   [...(field.value || []), size].filter(

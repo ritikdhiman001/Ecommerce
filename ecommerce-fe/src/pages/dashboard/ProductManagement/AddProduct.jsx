@@ -57,7 +57,6 @@ function AddProduct({ open, setOpen }) {
     axios
       .post(`${apiUrl}/addproduct`, form)
       .then((response) => {
-        console.log(response);
         toast.success("Product Added Successfully");
         setOpen(false);
         setFormData({
@@ -70,7 +69,6 @@ function AddProduct({ open, setOpen }) {
         });
       })
       .catch((error) => {
-        console.log(error);
         toast.error("Failed to Add Product");
       });
   }

@@ -61,7 +61,6 @@ function AddUser({ open, setOpen, setIsFetch }) {
       }));
     } else {
       setErrors({});
-      console.log(formData);
       axios
         .post(`${apiUrl}/adduser`, {
           firstName: formData.firstName,
@@ -70,7 +69,6 @@ function AddUser({ open, setOpen, setIsFetch }) {
           password: formData.password,
         })
         .then((response) => {
-          console.log(response);
           setOpen(false);
           setIsFetch(true);
           toast.success("User Added Successfully");

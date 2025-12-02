@@ -30,7 +30,6 @@ function AddCategory({ open, setOpen }) {
     axios
       .post(`${apiUrl}/addcategory`, { name: Data.name })
       .then((response) => {
-        console.log(response);
         toast.success("Category Add Successfully");
         setOpen(false);
         setData({
@@ -38,7 +37,6 @@ function AddCategory({ open, setOpen }) {
         });
       })
       .catch((error) => {
-        console.log(error);
         toast.error("Failed to add Category");
       });
   }

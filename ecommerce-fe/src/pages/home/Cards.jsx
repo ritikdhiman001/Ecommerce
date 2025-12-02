@@ -48,7 +48,7 @@ export function Cards() {
             >
               <CardHeader className="h-60 p-0">
                 <img
-                  src={`${apiUrl}/uploads/${val.image}`}
+                  src={val.image}
                   alt={val.productName}
                   className="w-full h-full object-cover"
                 />
