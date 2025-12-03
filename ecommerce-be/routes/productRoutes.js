@@ -29,7 +29,7 @@ const storage = new CloudinaryStorage({
       // preserve extension (jpg, png)
       return path.extname(file.originalname).replace(".", "") || "jpg";
     },
-    public_id: (req, file) => `prod_${Date.now()}_${Math.round(Math.random()*1e6)}`
+    public_id: (req, file) => `prod_${Date.now()}_${Math.round(Math.random() * 1e6)}`
   },
 });
 const upload = multer({ storage });
@@ -40,7 +40,8 @@ router.post("/addproduct", upload.single("image"), async (req, res) => {
     req.body;
 
   const image = req.file ? req.file.path : "";
-  
+  console.log({ req }, image);
+
   try {
     const newProduct = new ProductModal({
       productName,
