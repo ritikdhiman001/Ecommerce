@@ -30,7 +30,7 @@ export function Cards() {
     if (addToCart) toast.success("Product Added to Cart");
   };
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-900 px-6 py-8 z-40">
+    <div className=" bg-white dark:bg-zinc-900 px-6 py-8 z-40 min-h-134 pb-17">
       <h1 className="text-3xl font-bold text-center mb-8 text-zinc-800 dark:text-white">
         Products
       </h1>
