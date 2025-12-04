@@ -29,7 +29,8 @@ const storage = new CloudinaryStorage({
       // preserve extension (jpg, png)
       return path.extname(file.originalname).replace(".", "") || "jpg";
     },
-    public_id: (req, file) => `prod_${Date.now()}_${Math.round(Math.random() * 1e6)}`
+    public_id: (req, file) =>
+      `prod_${Date.now()}_${Math.round(Math.random() * 1e6)}`,
   },
 });
 const upload = multer({ storage });
@@ -40,8 +41,6 @@ router.post("/addproduct", upload.single("image"), async (req, res) => {
     req.body;
 
   const image = req.file ? req.file.path : "";
-  console.log({ req }, image);
-
   try {
     const newProduct = new ProductModal({
       productName,
@@ -90,13 +89,13 @@ router.put("/update-product/:id", upload.single("image"), async (req, res) => {
   try {
     const productId = req.params.id;
     const product = await ProductModal.findById(productId);
-    const image = req.file ? req.file.filename : product.image;
+    const image = req.file ? req.file.path : product.image;
     const Data = { ...req.body, image: image };
 
     if (!product) {
       res.status(404).send("Not Found");
     }
-    const updatedProd = await ProductModal.findByIdAndUpdate(productId, Data);
+    await ProductModal.findByIdAndUpdate(productId, Data);
 
     res.status(201).send("Update successfully");
   } catch (error) {
