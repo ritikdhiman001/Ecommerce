@@ -4,7 +4,7 @@ import React from 'react'
 
 const HomeBanner = () => {
     return (
-        <div className="w-full h-[730px] flex bg-no-repeat bg-cover" style={{ backgroundImage: `url(${BgImg})` }} >
+        <div className="w-full md:h-[730px] h-[250px] flex bg-no-repeat bg-cover bg-center" style={{ backgroundImage: `url(${BgImg})` }} >
             <Navbar  />
         </div>
     )

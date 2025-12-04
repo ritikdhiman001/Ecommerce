@@ -74,7 +74,9 @@ function Register() {
 
   return (
     <AppLayout>
-      <div className="w-100 rounded-lg  p-6 bg-white dark:bg-zinc-900 relative overflow-hidden mt-[200px] ml-[550px] border-2 shadow-[0px_0px_100px_50px_rgba(8,_11,_14,_0.06)] ">
+      <div className="h-[100vh] flex items-center justify-center p-5 mt-5 md:mt-0">
+        
+      <div className="w-100 rounded-lg  p-6 bg-white dark:bg-zinc-900 relative overflow-hidden  border-2 shadow-[0px_0px_100px_50px_rgba(8,_11,_14,_0.06)] ">
         <div className="flex flex-col justify-center items-center space-y-2">
           <h2 className="text-2xl font-medium">Register</h2>
         </div>
@@ -169,6 +171,7 @@ function Register() {
             </Link>
           </p>
         </form>
+      </div>
       </div>
     </AppLayout>
   );

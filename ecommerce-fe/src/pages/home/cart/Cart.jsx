@@ -23,7 +23,7 @@ const Cart = () => {
 
     return (
         <AppLayout>
-            <div className="min-h-screen bg-white dark:bg-zinc-900 text-black dark:text-white p-6">
+            <div className="min-h-screen bg-white dark:bg-zinc-900 text-black dark:text-white p-6 mt-15">
                 <h1 className="text-center text-3xl font-bold mb-6">Your Cart</h1>
 
                 <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">

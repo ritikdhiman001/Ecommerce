@@ -24,15 +24,15 @@ const CartItem = ({ id, qty, setTotal }) => {
         <div className="absolute top-2 right-2">
           <X className="cursor-pointer" onClick={() => removeFromCart(id)} />
         </div>
-        <div className="flex gap-6 pt-4">
+        <div className="flex gap-6 pt-4 md:flex-row flex-col">
           <img
             src={ValData.image}
             alt="card-image"
             className="w-32 h-38 object-cover"
           />
           <div className="flex-1">
-            <div className="flex justify-between">
-              <h2 className="text-xl font-semibold">{ValData.productName}</h2>
+            <div className="flex justify-between gap-1">
+              <h2 className="md:text-xl text-[16px] font-semibold">{ValData.productName}</h2>
               <div className="font-bold text-[18px]">
                 {formatter.format(ValData.price * qty)}
               </div>

@@ -30,7 +30,7 @@ export function Cards() {
     if (addToCart) toast.success("Product Added to Cart");
   };
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-900 px-6 py-8 ">
+    <div className="min-h-screen bg-white dark:bg-zinc-900 px-6 py-8 z-40">
       <h1 className="text-3xl font-bold text-center mb-8 text-zinc-800 dark:text-white">
         Products
       </h1>
@@ -74,14 +74,14 @@ export function Cards() {
                 {existing ? (
                   <Button
                     onClick={() => navigate("/cart")}
-                    className="w-full bg-gray-800 cursor-pointer hover:bg-black border border-white text-white"
+                    className="w-full bg-gray-800 cursor-pointer hover:bg-black border border-white text-white p-0"
                   >
                     Go to Cart
                   </Button>
                 ) : (
                   <Button
                     onClick={() => handleAddToCart(val)}
-                    className="w-full bg-blue-700 cursor-pointer hover:bg-blue-800 text-white"
+                    className="w-full bg-blue-700 cursor-pointer hover:bg-blue-800 text-white p-0"
                   >
                     Add to Cart
                   </Button>
