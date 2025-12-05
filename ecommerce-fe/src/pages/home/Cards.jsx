@@ -74,21 +74,21 @@ export function Cards() {
                 {existing ? (
                   <Button
                     onClick={() => navigate("/cart")}
-                    className="w-full bg-gray-800 cursor-pointer hover:bg-black border border-white text-white p-0"
+                    className="w-full bg-black cursor-pointer hover:bg-gray-950 border border-white text-white p-0"
                   >
                     Go to Cart
                   </Button>
                 ) : (
                   <Button
                     onClick={() => handleAddToCart(val)}
-                    className="w-full bg-blue-700 cursor-pointer hover:bg-blue-800 text-white p-0"
+                    className="w-full bg-black cursor-pointer hover:bg-gray-950 text-white p-0"
                   >
                     Add to Cart
                   </Button>
                 )}
                 <Button
                   onClick={() => navigate(`/product/${val._id}`)}
-                  className="w-full bg-blue-700 cursor-pointer hover:bg-blue-800 text-white"
+                  className="w-full bg-black cursor-pointer hover:bg-gray-950 text-white"
                 >
                   View More{" "}
                 </Button>

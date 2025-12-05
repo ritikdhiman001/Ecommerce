@@ -59,7 +59,7 @@ function Navbar({ isDark = false }) {
           )}
         </button>
         <Link to="/cart" className="relative p-2 rounded-full ">
-          <ShoppingCart className="md:size-6 size-4"  />
+          <ShoppingCart className="md:size-6 size-4" />
           {cartItems.length > 0 && (
             <span className="absolute -top-1 -right-1 bg-red-500 text-white md:text-xs text-[10px] font-bold rounded-full py-[1px] px-[5px] md:px-1.5">
               {cartItems.length}
@@ -72,7 +72,7 @@ function Navbar({ isDark = false }) {
             to="/login"
             className={`px-4 py-2 border rounded  ${
               isControlled
-                ? "text-black border-black hover:text-red-600"
+                ? "text-black border-black "
                 : isDark
                 ? "hover:text-black"
                 : "text-white "

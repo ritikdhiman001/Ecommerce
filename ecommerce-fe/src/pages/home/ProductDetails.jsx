@@ -38,9 +38,7 @@ export default function ProductDetail({ product }) {
               Product Description
             </h3>
             <p className="text-xs text-gray-600 mb-1">{product.style}</p>
-            <p className="text-sm text-white leading-relaxed">
-              {product.description}
-            </p>
+            <p className="text-sm leading-relaxed">{product.description}</p>
           </div>
 
           <Accordion
