@@ -63,7 +63,7 @@ export function Cards() {
                 <Typography className="text-sm text-zinc-600 dark:text-zinc-300 mb-2">
                   {val.category}
                 </Typography>
-                <Typography className="text-blue-700 dark:text-blue-400 font-bold text-xl mb-2">
+                <Typography className="text-black  dark:text-white font-bold text-xl mb-2">
                   {formatter.format(val.price)}
                 </Typography>
                 <Typography className="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
@@ -74,21 +74,21 @@ export function Cards() {
                 {existing ? (
                   <Button
                     onClick={() => navigate("/cart")}
-                    className="w-full bg-black cursor-pointer hover:bg-gray-950 border border-white text-white p-0"
+                    className="w-full bg-black cursor-pointer hover:bg-zinc-700 border border-white text-white p-0"
                   >
                     Go to Cart
                   </Button>
                 ) : (
                   <Button
                     onClick={() => handleAddToCart(val)}
-                    className="w-full bg-black cursor-pointer hover:bg-gray-950 text-white p-0"
+                    className="w-full bg-black cursor-pointer hover:bg-zinc-700  text-white p-0"
                   >
                     Add to Cart
                   </Button>
                 )}
                 <Button
                   onClick={() => navigate(`/product/${val._id}`)}
-                  className="w-full bg-black cursor-pointer hover:bg-gray-950 text-white"
+                  className="w-full bg-black cursor-pointer hover:bg-zinc-700  text-white"
                 >
                   View More{" "}
                 </Button>
